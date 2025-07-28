@@ -1,9 +1,7 @@
-version: '3'
-
 services:
   # Database
   db:
-    image: mysql:5.7
+    image: brunoluizdossantos/mysql:8.0.22
     volumes:
       - db_data:/var/lib/mysql
     restart: always
@@ -18,7 +16,7 @@ services:
   phpmyadmin:
     depends_on:
       - db
-    image: phpmyadmin/phpmyadmin
+    image: brunoluizdossantos/phpmyadmin:latest
     restart: always
     ports:
       - '8080:80'
@@ -31,7 +29,7 @@ services:
   wordpress:
     depends_on:
       - db
-    image: wordpress:latest
+    image: brunoluizdossantos/wordpress:latest
     ports:
       - '8000:80'
     restart: always
